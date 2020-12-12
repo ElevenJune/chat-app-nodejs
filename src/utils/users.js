@@ -16,7 +16,7 @@ const addUser = ({ id, username, room }) => {
     })
 
     if(existingUser){
-        return { error : "username and room are required"}
+        return { error : "username is already taken, please choose another one"}
     }
 
     const user = {id, username, room}
