@@ -13,11 +13,13 @@
         <div class="centered-form__box">
             <h1>Join</h1>
             <form action="./chat.html">
-                <label>Display Name</label>
-                <input type="text" name="username" placeholder="Display Name" required>
-                <label>Room</label>
+                <p>Display Name</p>
+                <input type="text" name="username" placeholder="Display Name" maxlength="10" required>
+                <p>Room</p>
+                <label>Available rooms :</label>
+                <ul id="availableRoomsList">
+                </ul>
                 <datalist id="rooms">
-                    <option>test</option>
                 </datalist>
                 <input type="text" list="rooms" name="room" placeholder="room" required>
                 <button>Join</button>

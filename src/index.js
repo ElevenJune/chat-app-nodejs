@@ -18,6 +18,7 @@ app.use(express.static(publicDirectoryPath))
 
 
 io.on('connection',(socket)=>{
+    console.log(getRooms())
     socket.emit('roomList',getRooms())
    
     socket.on('join',(options, callback) => {

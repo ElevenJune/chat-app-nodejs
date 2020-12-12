@@ -4,6 +4,8 @@ const rooms = []
 const addUser = ({ id, username, room }) => {
     username = username.trim().toLowerCase()
     room = room.trim().toLowerCase()
+    if(room.length>10)
+        room = room.substring(0,10)
 
     if(!username || !room){
         return { error : "username and room are required"}
@@ -34,10 +36,10 @@ const removeUser = (id) => {
     })
     if(index==-1)
         return;
-    const usersInRoom = getUsersInRoom(user.room)
-    if(usersInRoom.length===0){
+    const usersInRoom = getUsersInRoom(users[index].room)
+    if(usersInRoom.length===1){
         const roomIndex = users.findIndex((room)=>{
-            return user.room === room
+            return users[index].room === room
         })
         rooms.splice(roomIndex,1)
     }
@@ -54,7 +56,11 @@ const getUsersInRoom = (room) => {
 }
 
 const getRooms = () => {
-    return rooms;
+    const roomsInfo = rooms.map((room)=>{
+        return {name:room,
+                nOfUsers:getUsersInRoom(room).length}
+    })
+    return roomsInfo;
 }
 
 module.exports = {
