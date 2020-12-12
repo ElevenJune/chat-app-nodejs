@@ -16,11 +16,17 @@
                 <label>Display Name</label>
                 <input type="text" name="username" placeholder="Display Name" required>
                 <label>Room</label>
-                <input type="text" name="room" placeholder="room" required>
+                <datalist id="rooms">
+                    <option>test</option>
+                </datalist>
+                <input type="text" list="rooms" name="room" placeholder="room" required>
                 <button>Join</button>
             </form>
         </div>
     </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
 </body>
 
 </html>

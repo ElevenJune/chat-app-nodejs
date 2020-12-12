@@ -5,7 +5,7 @@ const socketio = require('socket.io')
 const { callbackify } = require('util')
 const Filter = require('bad-words')
 const {generateMessage, generateLocation} = require('./utils/messages')
-const { addUser,removeUser,getUser,getUsersInRoom} = require('./utils/users')
+const { addUser,removeUser,getUser,getUsersInRoom,getRooms} = require('./utils/users')
 
 const PORT = process.env.PORT || 3000
 const app = express()
@@ -18,6 +18,7 @@ app.use(express.static(publicDirectoryPath))
 
 
 io.on('connection',(socket)=>{
+    socket.emit('roomList',getRooms())
    
     socket.on('join',(options, callback) => {
         const {error, user} =  addUser({id:socket.id,...options})

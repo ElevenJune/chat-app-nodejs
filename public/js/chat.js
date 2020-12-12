@@ -108,6 +108,14 @@ socket.emit('join', {username, room}, (error)=>{
 
 })
 
+socket.emit('roomList', {}, (error)=>{
+    if(error){
+        alert(error)
+        location.href = '/'
+    }
+
+})
+
 // socket.on('countUpdated',(count)=>{
 //     console.log("count updated " , count)
 
